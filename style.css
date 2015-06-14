@@ -867,19 +867,19 @@ footer img {
 }
 
 .social .twitter {
-  background-image: url(../img/btn-twitter-aqua-100-scroll.png);
+  background-image: url(img/btn-twitter-aqua-100-scroll.png);
 }
 
 .social .facebook {
-  background-image: url(../img/btn-facebook-aqua-100-scroll.png);
+  background-image: url(img/btn-facebook-aqua-100-scroll.png);
 }
 
 .social .instagram {
-  background-image: url(../img/btn-insta-aqua-100-scroll.png);
+  background-image: url(img/btn-insta-aqua-100-scroll.png);
 }
 
 .social .spotify {
-  background-image: url(../img/btn-spotify-aqua-100-scroll.png);
+  background-image: url(img/btn-spotify-aqua-100-scroll.png);
 }
 
 .social li a:hover {
