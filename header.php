@@ -30,7 +30,7 @@
 		<nav id="site-navigation" class="main-navigation navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
-		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-navigation">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-navigation-menu">
 		        <span class="sr-only">Toggle navigation</span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
@@ -47,6 +47,7 @@
 					'depth' => 2,
 					'container' => 'div',
 					'container_class' => 'collapse navbar-collapse',
+					'container_id' => 'site-navigation-menu',
 					'menu_class' => 'nav navbar-nav',
 					'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
 	        'walker' => new wp_bootstrap_navwalker()) ); ?>
