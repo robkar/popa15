@@ -79,6 +79,11 @@ endif; // popa15_setup
 add_action( 'after_setup_theme', 'popa15_setup' );
 
 /**
+ * Hide admin bar on non-admin sections of site
+ */
+add_filter('show_admin_bar', '__return_false');
+
+/**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
  * Priority 0 to make it available to lower priority callbacks.
@@ -120,7 +125,7 @@ function popa15_scripts() {
   wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', array('jquery'), '3.3.4', true);
 
-	wp_enqueue_script( 'popa15-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	//wp_enqueue_script( 'popa15-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'popa15-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
