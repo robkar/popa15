@@ -74,6 +74,26 @@ function popa15_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	// make nav menu relative for development
+	$filters = array(
+		'post_link',       // Normal post link
+		'post_type_link',  // Custom post type link
+		'page_link',       // Page link
+		'attachment_link', // Attachment link
+		'get_shortlink',   // Shortlink
+		'post_type_archive_link',    // Post type archive link
+		'get_pagenum_link',          // Paginated link
+		'get_comments_pagenum_link', // Paginated comment link
+		'term_link',   // Term link, including category, tag
+		'search_link', // Search link
+		'day_link',   // Date archive link
+		'month_link',
+		'year_link',
+	);
+	foreach ( $filters as $filter ) {
+		add_filter( $filter, 'wp_make_link_relative' );
+	}
 }
 endif; // popa15_setup
 add_action( 'after_setup_theme', 'popa15_setup' );
