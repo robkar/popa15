@@ -39,6 +39,13 @@ function popa15_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 200, 200, true ); // crop to square
+	// strip hardcoded width and height from thumbnail img
+	function remove_thumbnail_dimensions( $html, $post_id, $post_image_id ) {
+			$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+			return $html;
+	}
+	add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10, 3 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
