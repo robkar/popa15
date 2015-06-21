@@ -18,10 +18,7 @@ get_header(); ?>
 			</a>
 		</div>
 		<footer class="footer">
-			<div class="container">
-				<a href="http://www.visitstockholm.com"><img src="<?= get_template_directory_uri() ?>/img/spons-sthlm-2015.png" alt="Stockholm - the Capital of Scandinavia" /></a>
-				<a href="http://www.norrlandsguld.se"><img src="<?= get_template_directory_uri() ?>/img/spons-ng-2015.png" alt="Norrlands Guld alkoholfri" /></a>
-			</div>
+			
 		</footer>
 	</div>
 	<div id="primary" class="content-area container">
@@ -54,19 +51,20 @@ get_header(); ?>
 				$post = get_post($pageid, OBJECT);
 				setup_postdata($post);
 				// Get page template
-				$template_file = get_page_template_slug($pageid);
-				$template_slug = pathinfo($template_file, PATHINFO_FILENAME);
-				$template      = str_replace('page-', '', $template_slug);
+				//$template_file = get_page_template_slug($pageid);
+				//$template_slug = pathinfo($template_file, PATHINFO_FILENAME);
+				//$template      = str_replace('page-', '', $template_slug);
 				// DEBUG
 				//echo get_the_title($post->ID)  . '<br>';
 				//echo $template_slug . '<br>'. $template . '<br>';
 
 				// Get template parts
-				if ($template) {
-					get_template_part('template-parts/content-page', $template);
-				} else {
-					get_template_part( 'template-parts/content', 'page' );
-				}
+				//if ($template) {
+					get_template_part('template-parts/content-page', $post->post_name);
+				//} else {
+				//	echo "hej";
+				//	get_template_part( 'template-parts/content', 'page' );
+				//}
 
 				wp_reset_postdata();
 			endforeach;
