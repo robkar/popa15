@@ -604,6 +604,13 @@ body.home {
   background: url(img/duck-sprite.png) no-repeat center 8px;
 }
 
+.home article:before {
+  display: block;
+  content: "";
+  height: 50px;
+  margin: -50px 0 0;
+}
+
 /* Wavy background */
 body {
   background-image: url(img/popa15bg_top.jpg), url(img/popa15bg_inf_off.jpg);

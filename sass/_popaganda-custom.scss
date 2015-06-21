@@ -14,6 +14,13 @@ body.home {
   //background-position-y: -92px;
 }
 
+.home article:before {
+    display: block;
+    content: "";
+    height: 50px;
+    margin: -50px 0 0;
+}
+
 /* Wavy background */
 body {
   background-image: url(img/popa15bg_top.jpg), url(img/popa15bg_inf_off.jpg);
