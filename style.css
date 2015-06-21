@@ -592,6 +592,11 @@ object {
 /*--------------------------------------------------------------
 # Popaganda custom styles
 --------------------------------------------------------------*/
+/* Scrollspy */
+body.home {
+  position: relative;
+}
+
 /* Wavy background */
 body {
   background-image: url(img/popa15bg_top.jpg), url(img/popa15bg_inf_off.jpg);

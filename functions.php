@@ -75,25 +75,6 @@ function popa15_setup() {
 		'default-image' => '',
 	) ) );
 
-	// make nav menu relative for development
-	$filters = array(
-		'post_link',       // Normal post link
-		'post_type_link',  // Custom post type link
-		'page_link',       // Page link
-		'attachment_link', // Attachment link
-		'get_shortlink',   // Shortlink
-		'post_type_archive_link',    // Post type archive link
-		'get_pagenum_link',          // Paginated link
-		'get_comments_pagenum_link', // Paginated comment link
-		'term_link',   // Term link, including category, tag
-		'search_link', // Search link
-		'day_link',   // Date archive link
-		'month_link',
-		'year_link',
-	);
-	foreach ( $filters as $filter ) {
-		add_filter( $filter, 'wp_make_link_relative' );
-	}
 }
 endif; // popa15_setup
 add_action( 'after_setup_theme', 'popa15_setup' );
@@ -147,6 +128,9 @@ function popa15_scripts() {
 
 	//wp_enqueue_script( 'popa15-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
+	// theme custom js
+	wp_enqueue_script( 'popa15-custom', get_template_directory_uri() . '/js/popa15.js', array(), '20150621', true );
+
 	wp_enqueue_script( 'popa15-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -184,3 +168,15 @@ require get_template_directory() . '/inc/jetpack.php';
  * Include custom walker for bootstrap nav.
  */
 require_once('inc/wp_bootstrap_navwalker.php');
+
+/**
+ * Make nav links on first page internal (one-page)
+ */
+function popa15_onepage_nav_links( $atts, $item, $args ) {
+	if (is_front_page()) {
+		$link_page = get_post($item->object_id);
+		$atts['href'] = '#' . $link_page->post_name;
+	}
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'popa15_onepage_nav_links', 10, 3 );

@@ -6,8 +6,11 @@
  */
 
 ?>
-
+<?php if (is_front_page()) { ?>
+<article id="<?php echo $post->post_name; ?>" <?php post_class(); ?>>
+<?php } else { ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php } ?>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
@@ -26,4 +29,3 @@
 		<?php edit_post_link( esc_html__( 'Edit', 'popa15' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
-
