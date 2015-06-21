@@ -3,4 +3,11 @@ jQuery(document).ready(function() {
   jQuery(window).on('activate.bs.scrollspy', function (e) {
       history.replaceState({}, "", jQuery("a[href^='#']", e.target).attr("href"));
   });
+
+  // close menu when clicked (on mobile screen)
+  jQuery(document).on('click','.navbar-collapse.in',function(e) {
+    if( jQuery(e.target).is('a') ) {
+        jQuery(this).collapse('hide');
+    }
+  });
 });

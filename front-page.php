@@ -17,14 +17,6 @@ get_header(); ?>
 				<img class="img-responsive lineup" src="<?= get_template_directory_uri() ?>/img/lineup.png" alt="James Blake [UK], Seinabo Sey, Mø [DK], Lorentz, Amason, Elliphant och Joel Alme spelar på Popaganda 2015. Fler artister tillkommer. #popa15"/>
 			</a>
 		</div>
-		<div class="row social">
-			<ul>
-				<li><a class="facebook" href="http://www.facebook.com/popagandasthlm" title="Popaganda på Facebook" alt="Popaganda på Facebook"></a></li>
-				<li><a class="twitter" href="http://www.twitter.com/popagandasthlm" title="Popaganda på Twitter" alt="Popaganda på Twitter"></a></li>
-				<li><a class="instagram" href="http://instagram.com/popagandasthlm" title="Popaganda på Instagram" alt="Popaganda på Instagram"></a></li>
-				<li><a class="spotify" href="https://open.spotify.com/user/popagandastockholm" title="Popaganda på Spotify" alt="Popaganda på Spotify"></a></li>
-			</ul>
-		</div>
 		<footer class="footer">
 			<div class="container">
 				<a href="http://www.visitstockholm.com"><img src="<?= get_template_directory_uri() ?>/img/spons-sthlm-2015.png" alt="Stockholm - the Capital of Scandinavia" /></a>

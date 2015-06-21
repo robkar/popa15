@@ -597,6 +597,13 @@ body.home {
   position: relative;
 }
 
+/* Navigation */
+.navbar-brand {
+  width: 45px;
+  text-indent: -9999px;
+  background: url(img/duck-sprite.png) no-repeat center 8px;
+}
+
 /* Wavy background */
 body {
   background-image: url(img/popa15bg_top.jpg), url(img/popa15bg_inf_off.jpg);
@@ -673,7 +680,7 @@ footer img {
 /* social media links */
 .social {
   margin: auto;
-  padding: 0;
+  padding: 5px 0;
   text-align: center;
   /*width: 290px;*/
 }
@@ -694,10 +701,10 @@ footer img {
 .social li a {
   background-repeat: no-repeat;
   background-size: 100% auto;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   display: block;
-  margin-right: 10px;
+  margin-right: 4px;
   float: left;
 }
 
@@ -722,7 +729,7 @@ footer img {
 }
 
 .social li a:hover {
-  background-position-y: -50px;
+  background-position-y: -35px;
 }
 
 .hentry {
