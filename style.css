@@ -629,6 +629,7 @@ body {
   background-image: url(img/popa15bg_top.jpg), url(img/popa15bg_inf_off.jpg);
   background-size: 100% auto, 100% auto;
   background-repeat: no-repeat, repeat-y;
+  padding-top: 50px;
 }
 
 /* Header */
