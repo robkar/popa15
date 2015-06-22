@@ -10,7 +10,6 @@ get_header(); ?>
 	<div class="container">
 		<div class="jumbotron">
 			<a href="https://www.facebook.com/events/433784926799972/" target="_blank"><img src="<?= get_template_directory_uri() ?>/img/anka15.min.png" class="main-logo img-responsive" /></a>
-			<a href="https://secure.tickster.com/Intro.aspx?ERC=XWJEVF5MPP5C0T8&t=RR507B1K" role="button" class="btn btn-lg btn-primary" onclick="var w=820, h=600, l = (screen.width - w) / 2, t = (screen.height - h) / 2; window.open(this.href, '', 'width='+w+', height='+h+', left='+l+', top='+t+',scrollbars=yes'); return false">Köp Early Bird-biljett här!</a>
 		</div>
 		<div class="row">
 			<a href="https://www.facebook.com/events/433784926799972/" target="_blank">
@@ -18,7 +17,7 @@ get_header(); ?>
 			</a>
 		</div>
 		<footer class="footer">
-			
+
 		</footer>
 	</div>
 	<div id="primary" class="content-area container">
