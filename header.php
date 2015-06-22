@@ -41,21 +41,23 @@
 		      </a>
 		    </div>
 				<div id="site-navigation-menu" class="collapse navbar-collapse">
-					<?php wp_nav_menu( array(
-						'theme_location' => 'primary',
-						'menu_id' => 'primary-menu',
-						'depth' => 2,
-						'container' => false,
-						'menu_class' => 'nav navbar-nav text-uppercase',
-						'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-		        'walker' => new wp_bootstrap_navwalker()) ); ?>
-						<ul class="social navbar-right">
-							<li><a class="facebook" href="http://www.facebook.com/popagandasthlm" title="Popaganda på Facebook" alt="Popaganda på Facebook"></a></li>
-							<li><a class="twitter" href="http://www.twitter.com/popagandasthlm" title="Popaganda på Twitter" alt="Popaganda på Twitter"></a></li>
-							<li><a class="instagram" href="http://instagram.com/popagandasthlm" title="Popaganda på Instagram" alt="Popaganda på Instagram"></a></li>
-							<li><a class="spotify" href="https://open.spotify.com/user/popagandastockholm" title="Popaganda på Spotify" alt="Popaganda på Spotify"></a></li>
-						</ul>
+					<ul class="social navbar-right">
+						<li><a class="facebook" href="http://www.facebook.com/popagandasthlm" title="Popaganda på Facebook" alt="Popaganda på Facebook"></a></li>
+						<li><a class="twitter" href="http://www.twitter.com/popagandasthlm" title="Popaganda på Twitter" alt="Popaganda på Twitter"></a></li>
+						<li><a class="instagram" href="http://instagram.com/popagandasthlm" title="Popaganda på Instagram" alt="Popaganda på Instagram"></a></li>
+						<li><a class="spotify" href="https://open.spotify.com/user/popagandastockholm" title="Popaganda på Spotify" alt="Popaganda på Spotify"></a></li>
+					</ul>
+					<div class="container">
+						<?php wp_nav_menu( array(
+							'theme_location' => 'primary',
+							'menu_id' => 'primary-menu',
+							'depth' => 2,
+							'container' => false,
+							'menu_class' => 'nav navbar-nav text-uppercase',
+							'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+							'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+			        'walker' => new wp_bootstrap_navwalker()) ); ?>
+						</div>
 				</div>
 			</div>
 		</nav><!-- #site-navigation -->
