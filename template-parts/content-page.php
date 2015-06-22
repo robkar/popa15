@@ -27,5 +27,4 @@
 		</div><!-- .entry-content -->
 		<div  class="clearfix"></div>
 	</div>
-	<?php edit_post_link( esc_html__( 'Edit', 'popa15' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer>' ); ?>
 </article><!-- #post-## -->
