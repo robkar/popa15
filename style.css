@@ -778,7 +778,7 @@ footer img {
   background-position-y: -35px;
 }
 
-.hentry {
+.hentry > div {
   background-color: rgba(255, 255, 255, 0.65);
 }
 

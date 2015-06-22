@@ -32,7 +32,7 @@
 						<h3 class="panel-title"><a class="faq-title" href="#faq-<?php echo $faq->post_name;?>" data-toggle="collapse"><?php echo $faq->post_title; ?></a></h3>
 					</div>
 					<div id="faq-<?php echo $faq->post_name; ?>" class="collapse panel-body">
-						<?php echo get_the_content()?>
+						<?php echo apply_filters('the_content',get_the_content()); ?>
 					</div>
 				</div>
 			</div>

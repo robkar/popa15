@@ -36,7 +36,7 @@
 					'data-target' => '#artist-' . $artist->post_name
 				)); ?>
 				<div id="artist-<?php echo $artist->post_name; ?>" class="col-xs-12 collapse">
-					<?php echo get_the_content()?>
+					<?php echo apply_filters('the_content',get_the_content()); ?>
 				</div>
 			</div><?php
 			wp_reset_postdata();
