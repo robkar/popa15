@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 Theme Name: Popaganda 2015
 Theme URI: http://underscores.me/
@@ -610,6 +611,24 @@ object {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+/* FAQ panels */
+.faq-title, .faq-title:before {
+  vertical-align: middle;
+}
+
+.faq-title:hover, .faq-title:active {
+  text-decoration: none;
+}
+
+.faq-title:before {
+  content: '⊕ ';
+  font-size: 24px;
+}
+
+.faq-title[aria-expanded="true"]:before {
+  content: '⊖ ';
 }
 
 /* Scrollspy */

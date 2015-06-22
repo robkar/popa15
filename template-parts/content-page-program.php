@@ -27,7 +27,9 @@
 			setup_postdata($artist);
 			?>
 			<div class="artist col-xs-6 col-md-4 panel">
-				<h3><?php echo $artist->post_title; ?></h3>
+				<div class="panel-heading">
+					<h3 class="panel-title"><?php echo $artist->post_title; ?></h3>
+				</div>
 				<?php echo get_the_post_thumbnail($artist->ID, "post-thumbnail", array(
 					'data-parent' => '#artist-grid',
 					'data-toggle' => 'collapse',
