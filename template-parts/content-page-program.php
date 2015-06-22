@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <?php } ?>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php the_title( '<h1 class="entry-title text-uppercase">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
 	<div id="artist-grid" class="entry-content row panel-group">

@@ -46,7 +46,7 @@
 						'menu_id' => 'primary-menu',
 						'depth' => 2,
 						'container' => false,
-						'menu_class' => 'nav navbar-nav',
+						'menu_class' => 'nav navbar-nav text-uppercase',
 						'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
 						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 		        'walker' => new wp_bootstrap_navwalker()) ); ?>
