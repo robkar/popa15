@@ -9,7 +9,7 @@
 }
 
 #artist-grid .panel {
-  margin: 5px 0 0;
+  margin-top: 5px;
   border: 0;
 }
 
@@ -67,7 +67,7 @@
 }
 
 /* FAQ panels */
-.faq-title, .faq-title:before {
+.faq-title {
   vertical-align: middle;
 }
 
@@ -75,13 +75,16 @@
   text-decoration: none;
 }
 
-.faq-title:before {
-  content: '⊕ ';
-  font-size: 24px;
+.faq-title .glyphicon-minus-sign {
+  display: none;
 }
 
-.faq-title[aria-expanded="true"]:before {
-  content: '⊖ ';
+.faq-title[aria-expanded="true"] .glyphicon-plus-sign {
+  display: none;
+}
+
+.faq-title[aria-expanded="true"] .glyphicon-minus-sign {
+  display: inherit;
 }
 
 /* Scrollspy */
