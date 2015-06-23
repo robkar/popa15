@@ -588,7 +588,7 @@ object {
   text-align: center;
 }
 
-.byline {
+.byline, #nyheter .byline {
   display: none;
 }
 
