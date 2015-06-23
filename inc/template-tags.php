@@ -88,7 +88,7 @@ function popa15_posted_on() {
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'popa15' ),
+		esc_html_x( 'av %s', 'post author', 'popa15' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 

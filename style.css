@@ -588,6 +588,14 @@ object {
   text-align: center;
 }
 
+.byline {
+  display: none;
+}
+
+.posted-on {
+  font-size: 10px;
+}
+
 /* FAQ panels */
 .faq-title, .faq-title:before {
   vertical-align: middle;
