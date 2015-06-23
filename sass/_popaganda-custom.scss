@@ -1,3 +1,8 @@
+/* in page headers */
+h1 {
+  font-weight: bold;
+}
+
 /* artist thumbnails */
 .artist {
   padding: 0;
@@ -101,6 +106,10 @@ body.home {
 
 .navbar-brand:hover {
   //background-position-y: -92px;
+}
+
+.nav li a {
+  font-weight: bold;
 }
 
 .home article:before {

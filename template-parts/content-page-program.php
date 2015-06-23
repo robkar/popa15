@@ -29,7 +29,7 @@
 				?>
 				<div class="artist col-xs-6 col-md-4 panel">
 					<div class="panel-heading">
-						<h3 class="panel-title"><?php echo $artist->post_title; ?></h3>
+						<h3 class="panel-title text-uppercase"><?php echo $artist->post_title; ?></h3>
 					</div>
 					<?php echo get_the_post_thumbnail($artist->ID, "post-thumbnail", array(
 						'data-parent' => '#artist-grid',

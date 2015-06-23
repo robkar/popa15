@@ -566,6 +566,11 @@ object {
 /*--------------------------------------------------------------
 # Popaganda custom styles
 --------------------------------------------------------------*/
+/* in page headers */
+h1 {
+  font-weight: bold;
+}
+
 /* artist thumbnails */
 .artist {
   padding: 0;
@@ -681,6 +686,10 @@ body.home {
   width: 45px;
   text-indent: -9999px;
   background: url(img/duck-sprite.png) no-repeat center 8px;
+}
+
+.nav li a {
+  font-weight: bold;
 }
 
 .home article:before {
