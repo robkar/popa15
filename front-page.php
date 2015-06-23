@@ -13,7 +13,7 @@ get_header(); ?>
 		</div>
 		<div class="row">
 			<a href="https://www.facebook.com/events/433784926799972/" target="_blank">
-				<img class="img-responsive lineup" src="<?= get_template_directory_uri() ?>/img/lineup.png" alt="James Blake [UK], Seinabo Sey, Mø [DK], Lorentz, Amason, Elliphant och Joel Alme spelar på Popaganda 2015. Fler artister tillkommer. #popa15"/>
+				<img class="img-responsive lineup" src="<?= get_template_directory_uri() ?>/img/lineup2.png" alt="James Blake [UK], Mø [DK], Shout Out Louds, Seinabo Sey, Jungle [UK], Lorentz, Amason, Elliphant, Mapei, Joel Alme, Sabina Ddumba och Maja Francis spelar på Popaganda 2015. Fler artister tillkommer. #popa15"/>
 			</a>
 		</div>
 		<footer class="footer">
