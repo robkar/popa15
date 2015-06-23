@@ -27,7 +27,7 @@
 			foreach ($artists as $artist) {
 				setup_postdata($artist);
 				?>
-				<div class="artist col-xs-6 panel">
+				<div class="artist col-xs-6 col-md-4 panel">
 					<div class="panel-heading">
 						<h3 class="panel-title text-uppercase"><?php echo $artist->post_title; ?></h3>
 					</div>
