@@ -38,6 +38,7 @@
 					)); ?>
 					<div id="artist-<?php echo $artist->post_name; ?>" class="col-xs-12 collapse">
 						<?php echo apply_filters('the_content',get_the_content()); ?>
+						<?php echo get_meta($artist->ID); ?>
 					</div>
 				</div><?php
 				wp_reset_postdata();

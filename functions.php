@@ -146,6 +146,35 @@ function popa15_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'popa15_scripts' );
 
+/*
+Fetches all available social media meta-tags, if there are any. (for artist pages)
+*/
+function get_meta($id)
+{
+	$metas = array("web", "spotify", "myspace", "facebook", "soundcloud");
+	$found = false;
+	$content = '<ul id="meta">
+
+			';
+	for ($i = 0; $i < count($metas); $i++)
+	{
+		if ($meta = get_post_meta($id, $metas[$i], true))
+		{
+			$content .= '			<li class="'.strtolower($metas[$i]).'"><a href="'.$meta.'" title="'.ucwords($metas[$i]).'"></a></li>
+			';
+			$found = true;
+		}
+	}
+	$content .= '
+					</ul>
+					';
+	if ($found)
+	{
+		return $content;
+	}
+}
+
+
 /**
  * Implement the Custom Header feature.
  */

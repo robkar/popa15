@@ -588,6 +588,60 @@ object {
   text-align: center;
 }
 
+/* artist meta */
+#meta {
+  position: absolute;
+  right: 0px;
+  top: -40px;
+  padding: 6px;
+  border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  background-color: rgba(248, 245, 238, 0.8);
+}
+
+#meta li {
+  display: block;
+  float: left;
+  margin-left: 4px;
+}
+
+#meta a {
+  float: left;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-size: 100% auto;
+}
+
+#meta .facebook a {
+  background-image: url(img/btn-facebook-aqua-100-scroll.png);
+}
+
+#meta .myspace a {
+  background-image: url(img/btn-myspace-grey.png);
+}
+
+#meta .spotify a {
+  background-image: url(img/btn-spotify-aqua-100-scroll.png);
+}
+
+#meta .web a {
+  background-image: url(img/btn-website-aqua-100-scroll.png);
+}
+
+#meta .soundcloud a {
+  background-image: url(img/btn-soundcloud-aqua-100-scroll.png);
+}
+
+#meta .web a:hover, #meta .facebook a:hover, #meta .soundcloud a:hover, #meta .spotify a:hover {
+  background-position: 0px -30px;
+}
+
+.clear {
+  clear: both;
+}
+
+/* news byline */
 .byline, #nyheter .byline {
   display: none;
 }
