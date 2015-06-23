@@ -83,8 +83,8 @@ function popa15_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'popa15' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		esc_html_x( 'Publicerat %s', 'post date', 'popa15' ),
+		$time_string
 	);
 
 	$byline = sprintf(
