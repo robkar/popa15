@@ -31,10 +31,13 @@
 					<div class="panel-heading">
 						<h3 class="panel-title text-uppercase"><?php echo $artist->post_title; ?></h3>
 					</div>
-					<?php echo get_the_post_thumbnail($artist->ID, "post-thumbnail", array(
+					<?php
+					$fullimg = wp_get_attachment_image_src( get_post_thumbnail_id( $artist->ID ), 'full' );
+					echo get_the_post_thumbnail($artist->ID, "post-thumbnail", array(
 						'data-parent' => '#artist-grid',
 						'data-toggle' => 'collapse',
-						'data-target' => '#artist-' . $artist->post_name
+						'data-target' => '#artist-' . $artist->post_name,
+						'data-fullimage' => $fullimg[0]
 					)); ?>
 					<div id="artist-<?php echo $artist->post_name; ?>" class="col-xs-12 collapse">
 						<?php echo apply_filters('the_content',get_the_content()); ?>
