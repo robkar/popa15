@@ -216,3 +216,18 @@ function popa15_onepage_nav_links( $atts, $item, $args ) {
 	return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'popa15_onepage_nav_links', 10, 3 );
+
+/**
+ * For a certain set of pages, redirect to the corresponding section on front
+ */
+function popa15_redirect_pages_to_front() {
+	// redirect the pages below to that section on the front page
+	// (should maybe use get_nav_menu_items, but can't be bothered)
+	$sections = Array( 'nyheter', 'program', 'biljetter', 'info', 'kontakt', 'english' );
+	global $post;
+	$postname = $post->post_name;
+	if ( in_array( $postname, $sections ) ) {
+		wp_redirect( home_url( '#' . $postname ), 301 ); exit;
+	}
+}
+add_action( 'template_redirect', 'popa15_redirect_pages_to_front' );
