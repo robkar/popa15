@@ -12,9 +12,16 @@ get_header(); ?>
 			<a href="https://www.facebook.com/events/433784926799972/" target="_blank"><img src="<?= get_template_directory_uri() ?>/img/anka15.min.png" class="main-logo img-responsive" /></a>
 		</div>
 		<div class="row">
-			<a href="https://www.facebook.com/events/433784926799972/" target="_blank">
-				<img class="img-responsive lineup" src="<?= get_template_directory_uri() ?>/img/lineup2.png" alt="James Blake [UK], Mø [DK], Shout Out Louds, Seinabo Sey, Jungle [UK], Lorentz, Amason, Elliphant, Mapei, Joel Alme, Sabina Ddumba och Maja Francis spelar på Popaganda 2015. Fler artister tillkommer. #popa15"/>
-			</a>
+			<a href="https://www.facebook.com/events/433784926799972/" target="_blank"><?php
+			// fetch lineup (or other) image from featured image of latest published
+			// post in category "framsida"
+			$query_mainimg = new WP_Query('category_name=framsida&posts_per_page=1');
+			$query_mainimg->the_post();
+			echo get_the_post_thumbnail( $post_id, 'full' , array(
+				'class' => 'img-responsive lineup'
+			));
+			wp_reset_postdata();
+			?></a>
 		</div>
 		<footer class="footer">
 
