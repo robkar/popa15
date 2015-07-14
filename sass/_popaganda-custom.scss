@@ -168,6 +168,16 @@ footer img {
   width: 100%;
 }
 
+/* menu items */
+.menu-item-type-custom a, .menu-item-type-custom a:hover {
+  color: #333 !important;
+  background-color: #7abede !important;//rgb(192, 222, 249);
+}
+.nav>li>a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /* social media links */
 .social {
     margin: auto;
