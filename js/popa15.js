@@ -37,7 +37,7 @@ jQuery(document).ready(function($) {
   // expand artist panels to full width on click (and shrink again on collapse)
   $('.artist').on('show.bs.collapse', function (e) {
     var theimg = $(e.target).prev();
-    theimg.css("max-height","410px");
+    //theimg.css("max-height","410px");
     theimg.data("thumb", theimg.attr("src"));
     theimg.attr("src", theimg.data("fullimage"));
     $(e.target).parent().toggleClass("col-xs-6 col-md-4 col-xs-12");

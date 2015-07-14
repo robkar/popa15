@@ -9,8 +9,17 @@ h1 {
 }
 
 .artist > img {
-  width: 100%;
+  margin: 0 auto;
+  display: block;
   cursor: pointer;
+}
+
+.artist > div {
+  padding-top: 15px;
+}
+
+p {
+  margin-bottom: 15px;
 }
 
 #artist-grid .panel {
