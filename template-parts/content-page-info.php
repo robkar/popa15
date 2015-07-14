@@ -17,6 +17,7 @@
 		</header><!-- .entry-header -->
 
 		<div class="entry-content">
+			<div class="col-xs-12"><?php echo apply_filters('the_content',get_the_content()); ?></div>
 			<?php
 			// get ID of info page
 			$infopage = get_page_by_path('info');
