@@ -209,7 +209,7 @@ require_once('inc/wp_bootstrap_navwalker.php');
  * Make nav links on first page internal (one-page)
  */
 function popa15_onepage_nav_links( $atts, $item, $args ) {
-	if (is_front_page()) {
+	if ( is_front_page() && $item->type != "custom" ) {
 		$link_page = get_post($item->object_id);
 		$atts['href'] = '#' . $link_page->post_name;
 	}
