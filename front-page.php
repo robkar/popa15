@@ -51,28 +51,30 @@ get_header(); ?>
 				//echo '</pre>';
 				//echo '<br>';
 
-				// Setup page
-				$pageid = $item->object_id;
-				global $post;
-				$post = get_post($pageid, OBJECT);
-				setup_postdata($post);
-				// Get page template
-				//$template_file = get_page_template_slug($pageid);
-				//$template_slug = pathinfo($template_file, PATHINFO_FILENAME);
-				//$template      = str_replace('page-', '', $template_slug);
-				// DEBUG
-				//echo get_the_title($post->ID)  . '<br>';
-				//echo $template_slug . '<br>'. $template . '<br>';
+				if ( $item->type != "custom" ) {
+					// Setup page
+					$pageid = $item->object_id;
+					global $post;
+					$post = get_post($pageid, OBJECT);
+					setup_postdata($post);
+					// Get page template
+					//$template_file = get_page_template_slug($pageid);
+					//$template_slug = pathinfo($template_file, PATHINFO_FILENAME);
+					//$template      = str_replace('page-', '', $template_slug);
+					// DEBUG
+					//echo get_the_title($post->ID)  . '<br>';
+					//echo $template_slug . '<br>'. $template . '<br>';
 
-				// Get template parts
-				//if ($template) {
-					get_template_part('template-parts/content-page', $post->post_name);
-				//} else {
-				//	echo "hej";
-				//	get_template_part( 'template-parts/content', 'page' );
-				//}
+					// Get template parts
+					//if ($template) {
+						get_template_part('template-parts/content-page', $post->post_name);
+					//} else {
+					//	echo "hej";
+					//	get_template_part( 'template-parts/content', 'page' );
+					//}
 
-				wp_reset_postdata();
+					wp_reset_postdata();
+				}
 			endforeach;
 
 			?>
