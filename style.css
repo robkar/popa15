@@ -840,6 +840,7 @@ footer img {
     max-width: 128px;
     margin-left: 83px;
     margin-top: -45px;
+    z-index: 1;
   }
 }
 

@@ -126,7 +126,7 @@ add_action( 'widgets_init', 'popa15_widgets_init' );
  */
 function popa15_scripts() {
 	wp_enqueue_style( 'bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', array(), '3.3.4' );
-	wp_enqueue_style( 'popa15-style', get_stylesheet_uri(), array(), '20150813' );
+	wp_enqueue_style( 'popa15-style', get_stylesheet_uri(), array(), '20150813_2' );
 
 	wp_deregister_script( 'jquery' );
   wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), array(), null, true );
