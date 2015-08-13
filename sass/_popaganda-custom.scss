@@ -246,3 +246,20 @@ footer img {
 .hentry>div {
   background-color: rgba(255,255,255, 0.65);
 }
+
+/* biljettbubbla */
+#biljettbubbla {
+  position: absolute;
+  margin-left: 13%;
+  margin-top: -7%;
+  width: 20%;
+  z-index: 1337;
+}
+
+@media (min-width: 768px) {
+  #biljettbubbla {
+    max-width: 128px;
+    margin-left: 83px;
+    margin-top: -45px;
+  }
+}

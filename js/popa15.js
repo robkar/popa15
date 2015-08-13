@@ -1,6 +1,25 @@
+function popuplink(e) {
+  var w=800;
+  var h=600;
+  var l = (screen.width - w) / 2;
+  var t = (screen.height - h) / 2;
+  window.open(e.href, '', 'width='+w+', height='+h+', scrollbars=yes, left='+l+', top='+t+'');
+  return false;
+}
+
+function popuptickster(e) {
+  popuplink(this);
+  ga('send', 'pageview','/outgoing/secure.tickster.com');
+  return false;
+}
+
 jQuery(document).ready(function($) {
   // Inside of this function, $() will work as an alias for jQuery()
   // and other libraries also using $ will not be accessible under this shortcut
+
+  // popup links
+  $("#biljettbubbla, .buytix a").click(popuptickster);
+  $(".popup").click(popuplink);
 
   // update location when scrolling on front page
   $(window).on('activate.bs.scrollspy', function (e) {
