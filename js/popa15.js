@@ -3,7 +3,7 @@ function popuplink(e) {
   var h=600;
   var l = (screen.width - w) / 2;
   var t = (screen.height - h) / 2;
-  window.open(e.href, '', 'width='+w+', height='+h+', scrollbars=yes, left='+l+', top='+t+'');
+  window.open(e.href || this.href, '', 'width='+w+', height='+h+', scrollbars=yes, left='+l+', top='+t+'');
   return false;
 }
 
