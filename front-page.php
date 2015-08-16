@@ -8,10 +8,10 @@
 
 get_header(); ?>
 	<div class="container">
-		<div class="jumbotron">
+		<div class="jumbotron"><?php if (get_theme_mod('show_buytix')) { ?>
 			<a href="https://secure.tickster.com/Intro.aspx?ERC=XWJEVF5MPP5C0T8&t=RR507B1K" id="biljettbubbla" target="_blank">
 				<img src="<?= get_template_directory_uri() ?>/img/popa15_biljettbubbla_svart.png" alt="K&ouml;p biljett nu!"/>
-			</a>
+			</a><?php } # end show_buytix ?>
 			<a href="https://www.facebook.com/events/433784926799972/" target="_blank"><img src="<?= get_template_directory_uri() ?>/img/anka15.min.png" class="main-logo img-responsive" /></a>
 		</div>
 		<div class="row">

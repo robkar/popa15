@@ -28,6 +28,21 @@
 				setup_postdata($artist);
 				?>
 				<div class="artist col-xs-6 col-md-4 panel">
+					<?php
+						$playtime = get_post_meta($artist->ID, "time", true);
+						if ($playtime && get_theme_mod('show_day')) {
+							setlocale(LC_ALL, 'sv_SE');
+							$utime = strtotime($playtime);
+							$dayclass = sanitize_title(strftime("%A", $utime));
+							$day = strftime("%A", $utime);
+							echo '<div class="day day-' . $dayclass .
+								' img-circle"><span class="abbr">' .
+								$day[0] .
+								'</span><span class="full">' .
+								$day .
+								'</span></div>';
+						}
+					?>
 					<div class="panel-heading">
 						<h3 class="panel-title text-uppercase"><?php echo $artist->post_title; ?></h3>
 					</div>

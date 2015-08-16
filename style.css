@@ -843,5 +843,44 @@ footer img {
     z-index: 1;
   }
 }
+/* speldagar */
+.artist .day {
+  position: absolute;
+  top: 47px;
+  left: 5px;
+  font-size: 28px;
+  padding: 0.1em 0.5em;
+  background: #606060;
+  color: #fff;
+  pointer-events: none;
+}
+
+.artist .day-fredag {
+  background-color: #ff9010;
+}
+
+.artist .day-lordag {
+  background-color: #1090ff;
+}
+
+.col-xs-12 .day {
+  border-radius: 1em;
+  left: 16px;
+}
+
+.col-xs-12 .abbr, .col-xs-6 .full {
+  display: none;
+}
+
+.abbr {
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .artist .day {
+    font-size: 22px;
+  }
+}
+/* spelschema */
 
 /*# sourceMappingURL=style.css.map */
