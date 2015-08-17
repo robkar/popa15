@@ -848,12 +848,17 @@ footer img {
   position: absolute;
   top: 47px;
   left: 5px;
+  padding: 0;
+  pointer-events: none;
+}
+
+.artist .day-inner {
   text-transform: capitalize;
   font-size: 28px;
   padding: 0.1em 0.5em;
   background: #606060;
   color: #fff;
-  pointer-events: none;
+  display: inline-block;
 }
 
 .artist .day-fredag {
@@ -864,7 +869,7 @@ footer img {
   background-color: #1090ff;
 }
 
-.col-xs-12 .day {
+.col-xs-12 .day-inner {
   border-radius: 1em;
   left: 16px;
 }
@@ -878,7 +883,7 @@ footer img {
 }
 
 @media (min-width: 768px) {
-  .artist .day {
+  .artist .day-inner {
     font-size: 22px;
   }
 }

@@ -29,18 +29,24 @@
 				?>
 				<div class="artist col-xs-6 col-md-4 panel">
 					<?php
-						$playtime = get_post_meta($artist->ID, "time", true);
-						if ($playtime && get_theme_mod('show_day')) {
-							setlocale(LC_ALL, 'sv_SE.UTF8');
-							$utime = strtotime($playtime);
-							$dayclass = sanitize_title(strftime("%A", $utime));
-							$day = strftime("%A", $utime);
-							echo '<div class="day day-' . $dayclass .
-								' img-circle"><span class="abbr">' .
-								$day[0] .
-								'</span> <span class="full">' .
-								$day .
-								'</span></div>';
+						if (get_theme_mod('show_day')) {
+							?><div class="day"><?php
+							$playtimes = get_post_meta($artist->ID, "time", false);
+							foreach ($playtimes as $playtime) {
+								if ($playtime) {
+									setlocale(LC_ALL, 'sv_SE.UTF8');
+									$utime = strtotime($playtime);
+									$dayclass = sanitize_title(strftime("%A", $utime));
+									$day = strftime("%A", $utime);
+									echo '<div class="day-inner day-' . $dayclass .
+										' img-circle"><span class="abbr">' .
+										$day[0] .
+										'</span> <span class="full">' .
+										$day .
+										'</span></div>';
+								}
+							}
+							?></div><?php
 						}
 					?>
 					<div class="panel-heading">
