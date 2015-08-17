@@ -31,14 +31,14 @@
 					<?php
 						$playtime = get_post_meta($artist->ID, "time", true);
 						if ($playtime && get_theme_mod('show_day')) {
-							setlocale(LC_ALL, 'sv_SE');
+							setlocale(LC_ALL, 'sv_SE.UTF8');
 							$utime = strtotime($playtime);
 							$dayclass = sanitize_title(strftime("%A", $utime));
 							$day = strftime("%A", $utime);
 							echo '<div class="day day-' . $dayclass .
 								' img-circle"><span class="abbr">' .
 								$day[0] .
-								'</span><span class="full">' .
+								'</span> <span class="full">' .
 								$day .
 								'</span></div>';
 						}

@@ -20,7 +20,7 @@ get_header(); ?>
 			// post in category "framsida"
 			$query_mainimg = new WP_Query('category_name=framsida&posts_per_page=1');
 			$query_mainimg->the_post();
-			echo get_the_post_thumbnail( $post_id, 'full' , array(
+			echo get_the_post_thumbnail( $post->ID, 'full' , array(
 				'class' => 'img-responsive lineup'
 			));
 			wp_reset_postdata();

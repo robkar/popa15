@@ -848,6 +848,7 @@ footer img {
   position: absolute;
   top: 47px;
   left: 5px;
+  text-transform: capitalize;
   font-size: 28px;
   padding: 0.1em 0.5em;
   background: #606060;
