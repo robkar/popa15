@@ -20,10 +20,90 @@
 			<?php
 			// get ID of artist page
 			$progpage = get_page_by_path('program/artister');
+
+			// get artists for lineup grid and schedule
 			$artists = get_pages(array(
 				'sort_column' => 'menu_order,post_title',
 				'child_of' => $progpage->ID
 			));
+
+			// schedule code starts here
+			if (get_theme_mod('show_schedule')) {
+				// generate schedule array (of arrays, with entries artist, datetime, date, time, stage)
+				$schedule = array();
+				setlocale(LC_ALL, 'sv_SE.UTF8');
+				foreach($artists as $artist) {
+					$playtimes = get_post_meta($artist->ID, "time", false);
+					foreach($playtimes as $time) {
+						array_push($schedule, array(
+							'artist' => $artist->post_title,
+							'datetime' => $time,
+							'date' => strftime("%A", strtotime($time)) . date(" j/n", strtotime($time)),
+							'time' => substr($time, 11),
+							'stage' => get_post_meta($artist->ID, "stage", true)
+						));
+					}
+				}
+
+				function bydatetime($a, $b) {
+					return strcmp($a['datetime'], $b['datetime']);
+				}
+				function bytime($a, $b) {
+					return strcmp($a['time'], $b['time']);
+				}
+
+				// prepare array of all dates with events
+				$alldates = array();
+				$alltimes = array();
+				// output mobile-friendly schedule
+				echo '<div id="schedule-narrow" class="schedule visible-xs">';
+				usort($schedule, "bydatetime");
+				$lastdate = "";
+				foreach($schedule as $slot) {
+					if ($slot['date'] != $lastdate) {
+						echo '<h3>' . $slot['date'] . '</h3>';
+						array_push($alldates, $slot['date']);
+					}
+					if (!array_key_exists($slot['time'], $alltimes)) {
+						$alltimes[ $slot['time'] ] = array();
+					}
+					$alltimes[ $slot['time'] ][ $slot['date'] ] = $slot;
+					echo '<div class="schedule-slot"><span class="schedule-time">' . $slot['time'] .
+						'</span> <span class="schedule-artist">' . $slot['artist'] . '</span></div>';
+					$lastdate = $slot['date'];
+				}
+				echo '</div>';
+
+				// output desktop-friendly schedule
+				$cols = floor(12/count($alldates));
+				ksort($alltimes);
+
+				echo '<div id="schedule-wide" class="schedule hidden-xs"><div class="row">';
+				foreach($alldates as $date) {
+					echo '<div class="col-xs-' . $cols . '"><h3>' . $date . '</h3></div>';
+				}
+				echo '</div>';
+
+				foreach($alltimes as $slot) {
+					$ofs = 0;
+					echo '<div class="row">';
+					foreach($alldates as $date) {
+						if (isset($slot[$date])) {
+							$gig = $slot[$date];
+							$thisofs = $ofs == 0 ? "" : "col-xs-offset-" . $ofs . " ";
+							echo '<div class="' . $thisofs . 'col-xs-' . $cols . '"><div class="schedule-slot"><span class="schedule-time">' . $gig['time'] .
+							'</span> <span class="schedule-artist">' . $gig['artist'] . '</span></div></div>';
+							$ofs = 0;
+						} else {
+							$ofs += $cols;
+						}
+					}
+					echo "</div>";
+				}
+				echo "</div>";
+			}
+
+			// output artist grid
 			foreach ($artists as $artist) {
 				setup_postdata($artist);
 				?>
