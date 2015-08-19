@@ -506,6 +506,17 @@ body.home {
   font-size: 28px;
 }
 
+/* Center navbar in container */
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .container {
+  text-align: center;
+}
+
 .home article:before {
   display: block;
   content: "";
