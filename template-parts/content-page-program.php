@@ -27,6 +27,15 @@
 				'child_of' => $progpage->ID
 			));
 
+			// get ID of afterparty page
+			$clubpage = get_page_by_path('program/efterfester');
+
+			// get afterparties for lineup grid and schedule
+			$clubs = get_pages(array(
+				'sort_column' => 'menu_order,post_title',
+				'child_of' => $clubpage->ID
+			));
+
 			// schedule code starts here
 			if (get_theme_mod('show_schedule')) {
 				// generate schedule array (of arrays, with entries artist, datetime, date, time, stage)
@@ -104,7 +113,11 @@
 			}
 
 			// output artist grid
-			foreach ($artists as $artist) {
+			$n_artists = count($artists);
+			$n_clubs = count($clubs);
+			$i = 0;
+			foreach (array_merge($artists, $clubs) as $artist) {
+				$i++;
 				setup_postdata($artist);
 				?>
 				<div class="artist col-xs-6 col-md-4 panel">
@@ -146,6 +159,9 @@
 					</div>
 				</div><?php
 				wp_reset_postdata();
+				if ($n_clubs > 0 && $i == $n_artists) {
+					echo '<div id="clubsep" class="col-xs-12"><h2>KLUBBPROGRAM (separat inträde)</h2></div>';
+				}
 			}
 
 			?>
