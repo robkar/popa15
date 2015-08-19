@@ -27,6 +27,25 @@ p {
   border: 0;
 }
 
+#artist-grid .panel-heading {
+  background: #000;
+}
+
+.panel-heading h2 {
+  font-size: 30px;
+}
+
+.panel-heading h3 {
+  font-size: 24px;
+}
+
+#artist-grid .panel-title {
+  font-family: 'Amatic SC';
+  font-size: 28px;
+  font-weight: 400;
+  color: #fff;
+}
+
 #artist-grid h3 {
   overflow: hidden;
   white-space: nowrap;
@@ -119,6 +138,8 @@ body.home {
 
 .nav li a {
   font-weight: bold;
+  font-family: 'Amatic SC';
+  font-size: 28px;
 }
 
 .home article:before {
