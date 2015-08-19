@@ -14,6 +14,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<meta property="og:url" content="<?php the_permalink();?>" />
+<meta property="og:title" content="<?php is_front_page() ? bloginfo('name') : wp_title('|', true, 'right'); ?>" />
+<?php if (is_front_page()) { ?><meta property="og:description" content="Bob Hund, Seinabo Sey, James Blake [UK], Jungle [UK], Angel Haze [US], Lorentz, Shout Out Louds, Mø [DK], Laakso, Amason, Elliphant, Tove Styrke, Mapei, Sabina Ddumba, Joel Alme och Maja Francis spelar på Popaganda 2015. Fler artister tillkommer. #popa15" />
+<?php } ?>
+<meta property="og:image" content="<?= get_template_directory_uri() ?>/img/popa15_biljettbubbla_svart.png" />
 
 <?php wp_head(); ?>
 </head>
