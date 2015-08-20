@@ -318,6 +318,21 @@ footer img {
   }
 }
 
+/* scenbubbla (klubb) */
+.artist .stage {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  pointer-events: none;
+  border-radius: 1em;
+}
+
+.artist.col-xs-12 .stage {
+  top: 478px;
+  bottom: auto;
+  left: auto;
+}
+
 /* speldagar */
 .artist .day {
   position: absolute;
@@ -329,11 +344,19 @@ footer img {
 
 .artist .day-inner {
   text-transform: capitalize;
+  font-family: 'Amatic SC';
   font-size: 28px;
+  font-weight: bold;
+  line-height: 30px;
   padding: 0.1em 0.5em;
   background: #606060;
   color: #fff;
   display: inline-block;
+}
+
+.artist .day-inner .abbr {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 22px;
 }
 
 .artist .day-fredag {
@@ -359,7 +382,7 @@ footer img {
 
 @media (min-width: 768px) {
   .artist .day-inner {
-    font-size: 22px;
+    font-size: 28px;
   }
 }
 

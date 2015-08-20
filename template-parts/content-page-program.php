@@ -122,6 +122,10 @@
 				?>
 				<div id="<?php echo $artist->post_name; ?>" class="artist col-xs-6 col-md-4 panel">
 					<?php
+						$stage = get_post_meta($artist->ID, "stage", true); // show stage if available
+						if ($stage) {
+							echo '<div class="stage day-inner">' . $stage . '</div>';
+						}
 						if (get_theme_mod('show_day')) {
 							?><div class="day"><?php
 							$playtimes = get_post_meta($artist->ID, "time", false);
@@ -131,11 +135,13 @@
 									$utime = strtotime($playtime);
 									$dayclass = sanitize_title(strftime("%A", $utime));
 									$day = strftime("%A", $utime);
+									$time = strftime("%H:%M", $utime);
 									echo '<div class="day-inner day-' . $dayclass .
 										' img-circle"><span class="abbr">' .
 										$day[0] .
 										'</span> <span class="full">' .
 										$day .
+										(get_theme_mod('show_schedule')? ' ' . $time : '') . // add playtime if schedule is published
 										'</span></div>';
 								}
 							}
