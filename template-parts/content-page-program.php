@@ -120,7 +120,7 @@
 				$i++;
 				setup_postdata($artist);
 				?>
-				<div class="artist col-xs-6 col-md-4 panel">
+				<div id="<?php echo $artist->post_name; ?>" class="artist col-xs-6 col-md-4 panel">
 					<?php
 						if (get_theme_mod('show_day')) {
 							?><div class="day"><?php
@@ -160,7 +160,7 @@
 				</div><?php
 				wp_reset_postdata();
 				if ($n_clubs > 0 && $i == $n_artists) {
-					echo '<div id="clubsep" class="col-xs-12"><h2>KLUBBPROGRAM (separat inträde)</h2></div>';
+					echo '<div id="klubbprogram" class="col-xs-12"><div id="klubb-inner" class="col-xs-12"><h2>KLUBBPROGRAM (separat inträde)</h2></div></div>';
 				}
 			}
 

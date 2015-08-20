@@ -375,8 +375,11 @@ p {
 }
 
 #artist-grid .panel {
-  margin-top: 5px;
   border: 0;
+  /* internal link offset */
+  background: transparent;
+  margin-top: -50px;
+  padding-top: 55px;
 }
 
 #artist-grid .panel-heading {
@@ -405,13 +408,18 @@ p {
   text-align: center;
 }
 
-#clubsep {
-  background: #44a97c;
+#klubbprogram {
+  margin-top: -55px;
+  padding: 55px 0 0 0;
   margin-bottom: -5px;
+}
+
+#klubb-inner {
+  background: #44a97c;
   text-align: center;
 }
 
-#clubsep h2 {
+#klubbprogram h2 {
   margin-top: 10px;
   color: #fff;
   font-family: 'Amatic SC';
@@ -676,7 +684,7 @@ footer img {
 /* speldagar */
 .artist .day {
   position: absolute;
-  top: 47px;
+  top: 102px;
   left: 5px;
   padding: 0;
   pointer-events: none;
