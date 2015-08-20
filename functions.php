@@ -232,3 +232,14 @@ function popa15_redirect_pages_to_front() {
 	}
 }
 add_action( 'template_redirect', 'popa15_redirect_pages_to_front' );
+
+/**
+ * Redirect author archives to front page
+ */
+function author_archive_redirect() {
+   if( is_author() ) {
+       wp_redirect( home_url(), 301 );
+       exit;
+   }
+}
+add_action( 'template_redirect', 'author_archive_redirect' );
