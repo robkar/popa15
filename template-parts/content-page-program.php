@@ -90,20 +90,24 @@
 				echo '<div id="schedule" class="schedule"><div class="row">';
 
 				$lastdate = "";
+				$lastendtime = 0;
 				$first = true;
 				$i = 0;
 				foreach($schedule as $slot) {
 					if ($slot['date'] != $lastdate) {
 						if (!$first) echo '</div>';
-						echo '<div class="col-xs-12 col-md-' . $cols . '"><h3>' . $slot['date'] . '</h3>';
+						echo '<div class="col-xs-12 col-sm-' . $cols . '"><h3>' . $slot['date'] . '</h3>';
 					}
 					$first = false;
-					$height = round((max(30, $slot['length']))) - 5;
-					$ofs = $slot['date'] != $lastdate ? (' margin-top: ' . round(($slot['utime'] - $mintime)/40). 'px;') : '';
+					$scale = 1;
+					$height = round($scale * (max(30, $slot['length'] - 5)));
+					$top = $slot['date'] != $lastdate ? (round((($slot['utime'] - $mintime + ($slot['utime'] > $mintime ? 15*60 : 0))/60) * $scale)) : round($scale * (5 + ($slot['utime'] - $lastendtime)/60));
+					$ofs = ' margin-top: ' . $top . 'px;';
 					echo '<div class="schedule-slot", style="height: ' . $height .
 					'px; line-height: ' . $height .'px; background-color: ' . $paint[$i % $npaints] . ';' . $ofs .'"><span class="schedule-time">' . $slot['time'] .
 					'</span> <span class="schedule-artist">' . $slot['artist'] . '</span></div>';
 					$lastdate = $slot['date'];
+					$lastendtime = $slot['utime'] + ($slot['length'])* 60;
 					$i++;
 				}
 				echo "</div></div></div>";

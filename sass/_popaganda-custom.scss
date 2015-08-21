@@ -400,9 +400,14 @@ footer img {
   font-weight: bold;
   padding: 0 10px;
   font-size: 22px;
-  margin: 0 5px 5px;
+  margin: 0 5px;
 }
 
+@media (max-width: 767px) {
+  .schedule-slot {
+    margin-top: 5px !important;
+  }
+}
 #artist-grid .schedule h3 {
   font-family: 'Amatic SC';
   font-weight: bold;
