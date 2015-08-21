@@ -38,7 +38,7 @@
 
 			// schedule code starts here
 			if (get_theme_mod('show_schedule')) {
-				// generate schedule array (of arrays, with entries artist, datetime, date, time, stage)
+				// generate schedule array (of arrays, with entries artist, datetime, date, time, stage, length (in minutes))
 				$schedule = array();
 				setlocale(LC_ALL, 'sv_SE.UTF8');
 				foreach($artists as $artist) {
@@ -49,7 +49,9 @@
 							'datetime' => $time,
 							'date' => strftime("%A", strtotime($time)) . date(" j/n", strtotime($time)),
 							'time' => substr($time, 11),
-							'stage' => get_post_meta($artist->ID, "stage", true)
+							'stage' => get_post_meta($artist->ID, "stage", true),
+							'length' => get_post_meta($artist->ID, "length", true),
+							'utime' => strtotime($time) - strtotime(substr($time, 0, 10))
 						));
 					}
 				}
@@ -64,52 +66,43 @@
 				// prepare array of all dates with events
 				$alldates = array();
 				$alltimes = array();
-				// output mobile-friendly schedule
-				echo '<div id="schedule-narrow" class="schedule visible-xs">';
+				$mintime = INF;
+
+				// count days with events, and find the earliest starting time
 				usort($schedule, "bydatetime");
 				$lastdate = "";
 				foreach($schedule as $slot) {
+					$mintime = min($mintime, $slot['utime']);
 					if ($slot['date'] != $lastdate) {
-						echo '<h3>' . $slot['date'] . '</h3>';
 						array_push($alldates, $slot['date']);
 					}
-					if (!array_key_exists($slot['time'], $alltimes)) {
-						$alltimes[ $slot['time'] ] = array();
-					}
-					$alltimes[ $slot['time'] ][ $slot['date'] ] = $slot;
-					echo '<div class="schedule-slot"><span class="schedule-time">' . $slot['time'] .
-						'</span> <span class="schedule-artist">' . $slot['artist'] . '</span></div>';
 					$lastdate = $slot['date'];
 				}
-				echo '</div>';
 
-				// output desktop-friendly schedule
+				// output the ultimate schedule
 				$cols = floor(12/count($alldates));
-				ksort($alltimes);
 
-				echo '<div id="schedule-wide" class="schedule hidden-xs"><div class="row">';
-				foreach($alldates as $date) {
-					echo '<div class="col-xs-' . $cols . '"><h3>' . $date . '</h3></div>';
-				}
-				echo '</div>';
+				// nice colours (TODO)
+				$paint = array("#f25f91", "#6eb3e4", "#e8ef6b");
 
-				foreach($alltimes as $slot) {
-					$ofs = 0;
-					echo '<div class="row">';
-					foreach($alldates as $date) {
-						if (isset($slot[$date])) {
-							$gig = $slot[$date];
-							$thisofs = $ofs == 0 ? "" : "col-xs-offset-" . $ofs . " ";
-							echo '<div class="' . $thisofs . 'col-xs-' . $cols . '"><div class="schedule-slot"><span class="schedule-time">' . $gig['time'] .
-							'</span> <span class="schedule-artist">' . $gig['artist'] . '</span></div></div>';
-							$ofs = 0;
-						} else {
-							$ofs += $cols;
-						}
+				echo '<div id="schedule" class="schedule"><div class="row">';
+
+				$lastdate = "";
+				$first = true;
+				foreach($schedule as $slot) {
+					if ($slot['date'] != $lastdate) {
+						if (!$first) echo '</div>';
+						echo '<div class="col-xs-12 col-md-' . $cols . '"><h3>' . $slot['date'] . '</h3>';
 					}
-					echo "</div>";
+					$first = false;
+					$height = round((max(30, $slot['length']))) - 5;
+					$ofs = $slot['date'] != $lastdate ? (' margin-top: ' . round(($slot['utime'] - $mintime)/40). 'px;') : '';
+					echo '<div class="schedule-slot", style="height: ' . $height .
+					'px; line-height: ' . $height .'px;' . $ofs .'"><span class="schedule-time">' . $slot['time'] .
+					'</span> <span class="schedule-artist">' . $slot['artist'] . '</span></div>';
+					$lastdate = $slot['date'];
 				}
-				echo "</div>";
+				echo "</div></div></div>";
 			}
 
 			// output artist grid

@@ -126,7 +126,7 @@ add_action( 'widgets_init', 'popa15_widgets_init' );
  */
 function popa15_scripts() {
 	wp_enqueue_style( 'bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', array(), '3.3.4' );
-	wp_enqueue_style( 'popa15-style', get_stylesheet_uri(), array(), '20150820_3' );
+	wp_enqueue_style( 'popa15-style', get_stylesheet_uri(), array(), '20150821' );
 	wp_enqueue_style( 'google-fonts-amaticsc', '//fonts.googleapis.com/css?family=Amatic+SC:400,700&subset=latin-ext');
 
 	wp_deregister_script( 'jquery' );
