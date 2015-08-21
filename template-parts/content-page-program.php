@@ -82,13 +82,16 @@
 				// output the ultimate schedule
 				$cols = floor(12/count($alldates));
 
-				// nice colours (TODO)
-				$paint = array("#f25f91", "#6eb3e4", "#e8ef6b");
+				// nice colours
+				$paint = array("#f25f91", "#6eb3e4", "#e8ef6b", "#f58f52", "#bbced8",
+					"#d363b7", "#c5e352", "#74cfc8", "#87c7e2", "#e890cc", "#5bbceb", "#f69c57", "#ebf185");
+				$npaints = count($paint);
 
 				echo '<div id="schedule" class="schedule"><div class="row">';
 
 				$lastdate = "";
 				$first = true;
+				$i = 0;
 				foreach($schedule as $slot) {
 					if ($slot['date'] != $lastdate) {
 						if (!$first) echo '</div>';
@@ -98,9 +101,10 @@
 					$height = round((max(30, $slot['length']))) - 5;
 					$ofs = $slot['date'] != $lastdate ? (' margin-top: ' . round(($slot['utime'] - $mintime)/40). 'px;') : '';
 					echo '<div class="schedule-slot", style="height: ' . $height .
-					'px; line-height: ' . $height .'px;' . $ofs .'"><span class="schedule-time">' . $slot['time'] .
+					'px; line-height: ' . $height .'px; background-color: ' . $paint[$i % $npaints] . ';' . $ofs .'"><span class="schedule-time">' . $slot['time'] .
 					'</span> <span class="schedule-artist">' . $slot['artist'] . '</span></div>';
 					$lastdate = $slot['date'];
+					$i++;
 				}
 				echo "</div></div></div>";
 			}
