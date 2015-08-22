@@ -775,4 +775,27 @@ footer img {
   font-size: 40px;
 }
 
+#more_posts {
+  font-size: 24px;
+  font-family: 'Amatic SC';
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#more_posts .prev, #more_posts .next {
+  padding: 4px 8px;
+}
+
+#more_posts a:hover {
+  text-decoration: none;
+}
+
+#more_posts .next {
+  float: right;
+}
+
+#more_posts .prev {
+  float: left;
+}
+
 /*# sourceMappingURL=style.css.map */

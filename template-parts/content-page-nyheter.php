@@ -21,7 +21,13 @@
 		<?php /* get news posts */
 			$firstpost_class = " in"; // make first post expanded by default
 			$news_query = new WP_Query();
-			$news_query->query('category_name=nyheter&showposts=3');
+			global $paged; // ugly hack to get next posts links working
+			$paged = ( get_query_var('page')  ? get_query_var('page') : 1 );
+			$news_query->query(array(
+				'category_name' => 'nyheter',
+				'posts_per_page' => '3',
+				'paged' => $paged
+			));
 			if ($news_query->have_posts()) : while ($news_query->have_posts()) : $news_query->the_post();
 		?>
 			<div class="panel">
@@ -56,7 +62,18 @@
 			</div>
 	<?php
 		$firstpost_class = "";
-		endwhile; endif;
+		endwhile;
+		?>
+			<div id="more_posts"><span class="prev"><?php
+		echo get_previous_posts_link( '<span class="glyphicon glyphicon-triangle-left"></span> Nyare nyheter' );
+		?></span><span class="next"><?php
+		echo get_next_posts_link ( '&Auml;ldre nyheter <span class="glyphicon glyphicon-triangle-right"></span>', $news_query->max_num_pages );
+		?></span></div>
+		<div class="clearfix"></div>
+		<?php
+
+	endif;
+
 		wp_reset_postdata();
 	?>
 		</div> <!-- #newslist -->
