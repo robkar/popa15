@@ -32,7 +32,7 @@
 		?>
 			<div class="panel">
 				<div class="panel-heading">
-					<?php the_title( sprintf( '<h2 class="panel-title"><a href="#%s" data-toggle="collapse" data-parent="#newslist">', basename( get_permalink() ) ), '</a></h1>' ); ?>
+					<?php the_title( sprintf( '<h2 class="panel-title"><a href="#%s" data-toggle="collapse" data-parent="#newslist">', basename( get_permalink() ) ), '</a></h2>' ); ?>
 
 					<?php if ( 'post' == get_post_type() ) : ?>
 					<div class="entry-meta">
