@@ -73,4 +73,22 @@ jQuery(document).ready(function($) {
     $(e.target).parent().toggleClass("col-xs-6 col-md-4 col-xs-12");
   });
 
+  // dynamic news loading
+  var more_posts = $('<a />', {'class': 'btn btn-lg btn-primary', 'text':'Hallå eller?'});
+  more_posts.click(function() { $.ajax({
+		url: ajaxpagination.ajaxurl,
+		type: 'post',
+		data: {
+			action: 'ajax_pagination',
+      query_vars: ajaxpagination.query_vars,
+		},
+    beforeSend: function() {
+      more_posts.text('Hämtar...');
+    },
+		success: function( result ) {
+      more_posts.text('Hallå eller!');
+			alert( result );
+		}
+	})});
+  $('#more_posts').html(more_posts);
 });

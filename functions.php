@@ -121,6 +121,28 @@ function popa15_widgets_init() {
 }
 add_action( 'widgets_init', 'popa15_widgets_init' );
 
+/* ajax pagination */
+add_action( 'wp_ajax_nopriv_ajax_pagination', 'popa15_ajax_pagination' );
+add_action( 'wp_ajax_ajax_pagination', 'popa15_ajax_pagination' );
+
+function popa15_ajax_pagination() {
+		$query_vars = json_decode( stripslashes( $_POST['query_vars'] ), true );
+    $query_vars['paged'] = $_POST['page'] ;
+
+		$news_query = new WP_Query();
+		$news_query->query(array(
+			'category_name' => 'nyheter',
+			'posts_per_page' => '3',
+			'paged' => 2#$query_vars['paged'] + 1
+		));
+		if ($news_query->have_posts()) : while ($news_query->have_posts()) : $news_query->the_post();
+			echo get_the_title() . "\n";
+		endwhile; endif;
+
+    //echo get_bloginfo( 'title' );
+    die();
+}
+
 /**
  * Enqueue scripts and styles.
  */
@@ -138,6 +160,12 @@ function popa15_scripts() {
 
 	// theme custom js
 	wp_enqueue_script( 'popa15-custom', get_template_directory_uri() . '/js/popa15.js', array(), '20150813_2', true );
+
+	// localize js for ajax load more posts
+	wp_localize_script( 'popa15-custom', 'ajaxpagination', array(
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'query_vars' => json_encode( $wp_query->query )
+	));
 
 	wp_enqueue_script( 'popa15-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
