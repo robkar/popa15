@@ -437,3 +437,12 @@ footer img {
 #more_posts .prev {
   float: left;
 }
+
+// hide some webkit focus defaults
+a:focus {
+  text-decoration: none;
+}
+
+article:focus {
+  outline: none;
+}
