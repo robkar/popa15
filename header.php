@@ -16,9 +16,9 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <meta property="og:url" content="<?php the_permalink();?>" />
 <meta property="og:title" content="<?php is_front_page() ? bloginfo('name') : wp_title('|', true, 'right'); ?>" />
-<?php if (is_front_page()) { ?><meta property="og:description" content="Bob Hund, Seinabo Sey, James Blake [UK], Jungle [UK], Angel Haze [US], Lorentz, Shout Out Louds, Mø [DK], Laakso, Amason, Elliphant, Tove Styrke, Mapei, Sabina Ddumba, Joel Alme och Maja Francis spelar på Popaganda 2015. Fler artister tillkommer. #popa15" />
+<?php if (is_front_page()) { ?><meta property="og:description" content="Robyn &amp; La Bagatelle Magique, Bob Hund, Seinabo Sey, James Blake [UK], Jungle [UK], Angel Haze [US], Lorentz, Shout Out Louds, Mø [DK], Laakso, Amason, Elliphant, Tove Styrke, Mapei, Sabina Ddumba, Beatrice Eli, Urban Cone, Joel Alme och Maja Francis spelar på Popaganda 2015. #popa15" />
 <?php } ?>
-<meta property="og:image" content="<?= get_template_directory_uri() ?>/img/anka15.min.png" />
+<meta property="og:image" content="<?= get_template_directory_uri() ?>/img/anka15.fb.png" />
 
 <?php wp_head(); ?>
 </head>
