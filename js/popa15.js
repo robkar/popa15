@@ -73,4 +73,12 @@ jQuery(document).ready(function($) {
     $(e.target).parent().toggleClass("col-xs-6 col-md-4 col-xs-12");
   });
 
+  // expand faq and English faq entries when shown (and contract when hidden)
+  $('.faq').on('show.bs.collapse', function(e) {
+    $(e.target).parent().parent().toggleClass("col-md-6");
+  });
+  $('.faq').on('hide.bs.collapse', function(e) {
+    $(e.target).parent().parent().toggleClass("col-md-6");
+  })
+
 });
