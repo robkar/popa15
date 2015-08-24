@@ -798,4 +798,12 @@ footer img {
   float: left;
 }
 
+a:focus {
+  text-decoration: none;
+}
+
+article:focus {
+  outline: none;
+}
+
 /*# sourceMappingURL=style.css.map */
