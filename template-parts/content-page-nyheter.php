@@ -65,6 +65,11 @@
 		endwhile;
 		?>
 			<div id="more_posts"><span class="prev"><?php
+        function add_news_hash($val) {
+            return $val . "#nyheter";
+        };
+        add_filter('get_pagenum_link', 'add_news_hash');
+
 		echo get_previous_posts_link( '<span class="glyphicon glyphicon-triangle-left"></span> Nyare nyheter' );
 		?></span><span class="next"><?php
 		echo get_next_posts_link ( '&Auml;ldre nyheter <span class="glyphicon glyphicon-triangle-right"></span>', $news_query->max_num_pages );
