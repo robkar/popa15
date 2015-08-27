@@ -9,15 +9,15 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area container">
 		<main id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
 				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+					//the_archive_title( '<h1 class="page-title col-xs-12">', '</h1>' );
+					//the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
 
@@ -36,7 +36,8 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php the_posts_navigation(); ?>
+			<?php the_posts_navigation(array('prev_text'=>'&Auml;ldre inl&auml;gg &raquo;',
+																			'next_text'=>'&laquo; Nyare inl&auml;gg')); ?>
 
 		<?php else : ?>
 
