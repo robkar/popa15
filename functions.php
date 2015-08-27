@@ -126,17 +126,39 @@ add_action( 'wp_ajax_nopriv_ajax_pagination', 'popa15_ajax_pagination' );
 add_action( 'wp_ajax_ajax_pagination', 'popa15_ajax_pagination' );
 
 function popa15_ajax_pagination() {
-		$query_vars = json_decode( stripslashes( $_POST['query_vars'] ), true );
-    $query_vars['paged'] = $_POST['page'] ;
+		$page = $_POST['page'];
 
 		$news_query = new WP_Query();
 		$news_query->query(array(
 			'category_name' => 'nyheter',
 			'posts_per_page' => '3',
-			'paged' => 2#$query_vars['paged'] + 1
+			'paged' => $page
 		));
-		if ($news_query->have_posts()) : while ($news_query->have_posts()) : $news_query->the_post();
-			echo get_the_title() . "\n";
+		if ($news_query->have_posts()) : while ($news_query->have_posts()) : $news_query->the_post(); ?>
+		<div class="panel">
+			<div class="panel-heading">
+				<?php the_title( sprintf( '<h2 class="panel-title"><a href="#%s" data-toggle="collapse" data-parent="#newslist">', basename( get_permalink() ) ), '</a></h2>' ); ?>
+
+				<?php if ( 'post' == get_post_type() ) : ?>
+				<div class="entry-meta">
+					<?php popa15_posted_on(); ?>
+				</div><!-- .entry-meta -->
+				<?php endif; ?>
+			</div><!-- .panel-heading -->
+
+			<div class="panel-collapse collapse" id="<?php echo basename( get_permalink() ); ?>">
+				<div class="panel-body">
+					<?php
+						/* translators: %s: Name of current post */
+						the_content( sprintf(
+							wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'popa15' ), array( 'span' => array( 'class' => array() ) ) ),
+							the_title( '<span class="screen-reader-text">"', '"</span>', false )
+						) );
+					?>
+				</div><!-- .panel-body -->
+			</div>
+		</div>
+		<?php
 		endwhile; endif;
 
     //echo get_bloginfo( 'title' );
@@ -148,7 +170,7 @@ function popa15_ajax_pagination() {
  */
 function popa15_scripts() {
 	wp_enqueue_style( 'bootstrap-css', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', array(), '3.3.4' );
-	wp_enqueue_style( 'popa15-style', get_stylesheet_uri(), array(), '20150824' );
+	wp_enqueue_style( 'popa15-style', get_stylesheet_uri(), array(), '20150827' );
 	wp_enqueue_style( 'google-fonts-amaticsc', '//fonts.googleapis.com/css?family=Amatic+SC:400,700&subset=latin-ext');
 
 	wp_deregister_script( 'jquery' );
@@ -159,12 +181,12 @@ function popa15_scripts() {
 	//wp_enqueue_script( 'popa15-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	// theme custom js
-	wp_enqueue_script( 'popa15-custom', get_template_directory_uri() . '/js/popa15.js', array(), '20150824', true );
+	wp_enqueue_script( 'popa15-custom', get_template_directory_uri() . '/js/popa15.js', array(), '20150827', true );
 
 	// localize js for ajax load more posts
 	wp_localize_script( 'popa15-custom', 'ajaxpagination', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		'query_vars' => json_encode( $wp_query->query )
+		'page' => get_query_var('page', 1)
 	));
 
 	wp_enqueue_script( 'popa15-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );

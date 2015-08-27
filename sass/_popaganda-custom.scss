@@ -415,11 +415,16 @@ footer img {
 }
 
 // news navigation
-#more_posts {
+#more_posts, #more_posts .btn {
   font-size: 24px;
   font-family: 'Amatic SC';
   text-transform: uppercase;
   font-weight: bold;
+}
+
+#more_posts .btn {
+  margin: auto;
+  display: block;
 }
 
 #more_posts .prev, #more_posts .next {
