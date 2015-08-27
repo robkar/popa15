@@ -451,3 +451,18 @@ a:focus {
 article:focus {
   outline: none;
 }
+
+// mobilschema specials
+#mobilschema {
+  background: transparent;
+  padding: 0;
+}
+#mobilschema #artist-grid {
+  margin: 0;
+}
+
+#mobilschema header img {
+  max-width: 400px;
+  margin: auto;
+  display: block;
+}
