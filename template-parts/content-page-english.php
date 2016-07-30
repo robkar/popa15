@@ -1,6 +1,6 @@
 <?php
 /**
- * The template used for displaying faq entries
+ * The template used for displaying English faq entries
  *
  * @package Popaganda 2015
  */
@@ -20,7 +20,7 @@
 			<div class="col-xs-12"><?php echo apply_filters('the_content',get_the_content()); ?></div>
 			<?php
 			// get ID of info page
-			$infopage = get_page_by_path('info');
+			$infopage = get_page_by_path('english');
 			$faqs = get_pages(array(
 				'sort_column' => 'menu_order,post_title',
 				'child_of' => $infopage->ID

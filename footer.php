@@ -13,9 +13,12 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
+		<!--
 			<a href="http://www.visitstockholm.com"><img src="<?= get_template_directory_uri() ?>/img/spons-sthlm-2015.png" alt="Stockholm - the Capital of Scandinavia" /></a>
 			<a href="http://www.norrlandsguld.se"><img src="<?= get_template_directory_uri() ?>/img/spons-ng-2015.png" alt="Norrlands Guld alkoholfri" /></a>
 			<a href="http://www.benjerry.se/"><img src="<?= get_template_directory_uri() ?>/img/spons-benjerrys-2015.png" alt="Ben &amp; Jerry's" /></a>
+			-->
+			<img src="<?= get_template_directory_uri() ?>/img/spons-alla-2016.png" alt=""/>
 		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->

@@ -8,17 +8,21 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+	<div>
+		<div class="panel">
+			<div class="panel-header">
+				<header class="entry-header">
+					<?php the_title( sprintf( '<h1 class="entry-title col-xs-12"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 
-		<?php if ( 'post' == get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php popa15_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-content">
+				</header><!-- .entry-header -->
+			</div> <!-- .panel-header -->
+			<div class="panel-body">
+			<?php if ( 'post' == get_post_type() ) : ?>
+			<div class="entry-meta">
+				<?php popa15_posted_on(); ?>
+			</div><!-- .entry-meta -->
+			<?php endif; ?>
+				<div class="entry-content col-xs-12">
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
@@ -33,9 +37,12 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .entry-content -->
+				</div><!-- .entry-content -->
+			</div><!-- .panel-body -->
 
 	<footer class="entry-footer">
 		<?php popa15_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+</div><!-- .panel -->
+</div>
 </article><!-- #post-## -->

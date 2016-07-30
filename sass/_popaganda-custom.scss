@@ -148,6 +148,24 @@ body.home {
 }
 
 /* Navigation */
+.post-navigation, .posts-navigation {
+  padding: 10px;
+  background-color: rgba(255,255,255, 0.65);
+  overflow: hidden;
+}
+
+.nav-previous {
+  float: right;
+}
+
+.nav-next {
+  float: left;
+}
+
+.nav-previous, .nav-next {
+  max-width: 50%;
+}
+
 .navbar-brand {
   width: 45px;
   text-indent: -9999px;
@@ -328,7 +346,7 @@ footer img {
 }
 
 .artist.col-xs-12 .stage {
-  top: 478px;
+  top: 102px;
   bottom: auto;
   left: auto;
 }
@@ -412,4 +430,57 @@ footer img {
   font-family: 'Amatic SC';
   font-weight: bold;
   font-size: 40px;
+}
+
+// news navigation
+#more_posts, #more_posts .btn {
+  font-size: 24px;
+  font-family: 'Amatic SC';
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#more_posts .btn {
+  margin: auto;
+  display: block;
+}
+
+#more_posts .prev, #more_posts .next {
+  padding: 4px 8px;
+}
+
+#more_posts a:hover {
+  text-decoration: none;
+}
+
+#more_posts .next {
+  float: right;
+}
+
+#more_posts .prev {
+  float: left;
+}
+
+// hide some webkit focus defaults
+a:focus {
+  text-decoration: none;
+}
+
+article:focus {
+  outline: none;
+}
+
+// mobilschema specials
+#mobilschema {
+  background: transparent;
+  padding: 0;
+}
+#mobilschema #artist-grid {
+  margin: 0;
+}
+
+#mobilschema header img {
+  max-width: 400px;
+  margin: auto;
+  display: block;
 }

@@ -16,9 +16,24 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <meta property="og:url" content="<?php the_permalink();?>" />
 <meta property="og:title" content="<?php is_front_page() ? bloginfo('name') : wp_title('|', true, 'right'); ?>" />
-<?php if (is_front_page()) { ?><meta property="og:description" content="Bob Hund, Seinabo Sey, James Blake [UK], Jungle [UK], Angel Haze [US], Lorentz, Shout Out Louds, Mø [DK], Laakso, Amason, Elliphant, Tove Styrke, Mapei, Sabina Ddumba, Joel Alme och Maja Francis spelar på Popaganda 2015. Fler artister tillkommer. #popa15" />
+<?php if (is_front_page()) { ?><meta property="og:description" content="#popa16" />
 <?php } ?>
-<meta property="og:image" content="<?= get_template_directory_uri() ?>/img/anka15.min.png" />
+<meta property="og:image" content="<?= get_template_directory_uri() ?>/img/anka16.fb.png" />
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1320960847932998');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1320960847932998&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 
 <?php wp_head(); ?>
 </head>

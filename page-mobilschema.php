@@ -1,19 +1,42 @@
 <?php
 /**
- * The template used for displaying booked artists
+ * The template used for displaying a compact schedule
  *
  * @package Popaganda 2015
  */
 
-?>
-<?php if (is_front_page()) { ?>
-<article id="<?php echo $post->post_name; ?>" <?php post_class(); ?>>
-<?php } else { ?>
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<meta property="og:url" content="http://m.popaganda.se" />
+<meta property="og:title" content="<?php is_front_page() ? bloginfo('name') : wp_title('|', true, 'right'); ?>" />
+<meta property="og:description" content="Robyn &amp; La Bagatelle Magique, Bob Hund, Seinabo Sey, James Blake [UK], Jungle [UK], Angel Haze [US], Lorentz, Shout Out Louds, Mø [DK], Laakso, Amason, Elliphant, Tove Styrke, Mapei, Sabina Ddumba, Beatrice Eli, Urban Cone, Joel Alme och Maja Francis spelar på Popaganda 2015. #popa15" />
+<meta property="og:image" content="<?= get_template_directory_uri() ?>/img/anka15.fb.png" />
+
+<?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?> id="mobilschema" onload="var today=document.getElementById('schedule-<?php echo strftime("%F"); ?>'); ( today ? today : document.getElementById('schedule')).scrollIntoView()">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-5032980-3', {'allowAnchor': true});
+ga('send', 'pageview');
+
+</script>
+<div id="page" class="hfeed site">
+	<div id="content" class="site-content container">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<?php } ?>
 	<div>
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title text-uppercase col-xs-12">', '</h1>' ); ?>
+			<a href="http://www.popaganda.se" target="_blank"><img src="<?= get_template_directory_uri() ?>/img/anka15.min.png" class="main-logo img-responsive" /></a>
 		</header><!-- .entry-header -->
 
 		<div id="artist-grid" class="entry-content row panel-group">
@@ -87,7 +110,7 @@
 					"#d363b7", "#c5e352", "#74cfc8", "#87c7e2", "#e890cc", "#5bbceb", "#f69c57", "#ebf185");
 				$npaints = count($paint);
 
-				echo '<div id="schedule" class="schedule"><div class="row">';
+				echo '<div id="schedule" class="schedule"><div class="">';
 
 				$lastdate = "";
 				$lastendtime = 0;
@@ -96,7 +119,7 @@
 				foreach($schedule as $slot) {
 					if ($slot['date'] != $lastdate) {
 						if (!$first) echo '</div>';
-						echo '<div class="col-xs-12 col-sm-' . $cols . '"><h3>' . $slot['date'] . '</h3>';
+						echo '<div class="col-xs-12 col-sm-' . $cols . '" id="schedule-' . strftime("%F", strtotime($slot['datetime'])) . '"><h3>' . $slot['date'] . '</h3>';
 					}
 					$first = false;
 					$scale = 1;
@@ -113,67 +136,14 @@
 				echo "</div></div></div>";
 			}
 
-			// output artist grid
-			$n_artists = count($artists);
-			$n_clubs = count($clubs);
-			$i = 0;
-			foreach (array_merge($artists, $clubs) as $artist) {
-				$i++;
-				setup_postdata($artist);
-				?>
-				<div id="<?php echo $artist->post_name; ?>" class="artist col-xs-6 col-md-4 panel">
-					<?php
-						$stage = get_post_meta($artist->ID, "stage", true); // show stage if available
-						if ($stage) {
-							echo '<div class="stage day-inner">' . $stage . '</div>';
-						}
-						if (get_theme_mod('show_day')) {
-							?><div class="day"><?php
-							$playtimes = get_post_meta($artist->ID, "time", false);
-							foreach ($playtimes as $playtime) {
-								if ($playtime) {
-									setlocale(LC_ALL, 'sv_SE.UTF8');
-									$utime = strtotime($playtime);
-									$dayclass = sanitize_title(strftime("%A", $utime));
-									$day = strftime("%A", $utime);
-									$time = strftime("%H:%M", $utime);
-									echo '<div class="day-inner day-' . $dayclass .
-										' img-circle"><span class="abbr">' .
-										$day[0] .
-										'</span> <span class="full">' .
-										$day .
-										(get_theme_mod('show_schedule')? ' ' . $time : '') . // add playtime if schedule is published
-										'</span></div>';
-								}
-							}
-							?></div><?php
-						}
-					?>
-					<div class="panel-heading">
-						<h3 class="panel-title text-uppercase"><?php echo $artist->post_title; ?></h3>
-					</div>
-					<?php
-					$fullimg = wp_get_attachment_image_src( get_post_thumbnail_id( $artist->ID ), 'full' );
-					echo get_the_post_thumbnail($artist->ID, "post-thumbnail", array(
-						'data-parent' => '#artist-grid',
-						'data-toggle' => 'collapse',
-						'data-target' => '#artist-' . $artist->post_name,
-						'data-fullimage' => $fullimg[0]
-					)); ?>
-					<div id="artist-<?php echo $artist->post_name; ?>" class="col-xs-12 collapse">
-						<?php echo apply_filters('the_content',get_the_content()); ?>
-						<?php echo get_meta($artist->ID); ?>
-					</div>
-				</div>
-				<?php
-				wp_reset_postdata();
-				if ($n_clubs > 0 && $i == $n_artists) {
-					echo '<div id="klubbprogram" class="col-xs-12"><div id="klubb-inner" class="col-xs-12"><h2>KLUBBPROGRAM (separat inträde)</h2></div></div>';
-				}
-			}
-
 			?>
 		</div><!-- .entry-content -->
-		
 	</div>
 </article><!-- #post-## -->
+</div><!-- #content -->
+</div><!-- #page -->
+
+<?php wp_footer(); ?>
+
+</body>
+</html>

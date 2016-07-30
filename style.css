@@ -364,6 +364,7 @@ h1 {
   margin: 0 auto;
   display: block;
   cursor: pointer;
+  /*min-width: 100%;*/
 }
 
 .artist > div {
@@ -408,13 +409,13 @@ p {
   text-align: center;
 }
 
-#klubbprogram {
+#klubbprogram, #tba {
   margin-top: -55px;
   padding: 55px 0 0 0;
   margin-bottom: -5px;
 }
 
-#klubb-inner {
+#klubb-inner, #tba-inner {
   background: #44a97c;
   text-align: center;
 }
@@ -516,6 +517,24 @@ body.home {
 }
 
 /* Navigation */
+.post-navigation, .posts-navigation {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.65);
+  overflow: hidden;
+}
+
+.nav-previous {
+  float: right;
+}
+
+.nav-next {
+  float: left;
+}
+
+.nav-previous, .nav-next {
+  max-width: 50%;
+}
+
 .navbar-brand {
   width: 45px;
   text-indent: -9999px;
@@ -548,9 +567,9 @@ body.home {
 
 /* Wavy background */
 body {
-  background-image: url(img/popa15bg_top.jpg), url(img/popa15bg_inf_off.jpg);
-  background-size: 100% auto, 100% auto;
-  background-repeat: no-repeat, repeat-y;
+  background-image: url(img/popa16bg.jpg);
+  background-size: 100% auto;
+  background-repeat: repeat-y;
   padding-top: 50px;
 }
 
@@ -575,7 +594,7 @@ footer {
 }
 
 footer img {
-  width: 12%;
+  /*width: 12%;*/
   min-width: 90px;
   margin: 0 3%;
 }
@@ -691,7 +710,7 @@ footer img {
 }
 
 .artist.col-xs-12 .stage {
-  top: 478px;
+  top: 102px;
   bottom: auto;
   left: auto;
 }
@@ -773,6 +792,57 @@ footer img {
   font-family: 'Amatic SC';
   font-weight: bold;
   font-size: 40px;
+}
+
+#more_posts, #more_posts .btn {
+  font-size: 24px;
+  font-family: 'Amatic SC';
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#more_posts .btn {
+  margin: auto;
+  display: block;
+}
+
+#more_posts .prev, #more_posts .next {
+  padding: 4px 8px;
+}
+
+#more_posts a:hover {
+  text-decoration: none;
+}
+
+#more_posts .next {
+  float: right;
+}
+
+#more_posts .prev {
+  float: left;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+article:focus {
+  outline: none;
+}
+
+#mobilschema {
+  background: transparent;
+  padding: 0;
+}
+
+#mobilschema #artist-grid {
+  margin: 0;
+}
+
+#mobilschema header img {
+  max-width: 400px;
+  margin: auto;
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */
